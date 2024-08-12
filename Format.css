@@ -63,3 +63,16 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+#post-title, #post-content {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#post-content {
+    height: 150px;
+    resize: vertical;
+}
