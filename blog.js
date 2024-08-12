@@ -14,6 +14,11 @@ const blogPosts = [
 
 const blogPostsContainer = document.getElementById('blog-posts');
 const addPostBtn = document.getElementById('add-post-btn');
+const addPostModal = document.getElementById('add-post-modal');
+const closeBtn = addPostModal.querySelector('.close');
+const submitPostBtn = document.getElementById('submit-post');
+const postTitleInput = document.getElementById('post-title');
+const postContentInput = document.getElementById('post-content');
 
 function displayBlogPosts() {
     blogPostsContainer.innerHTML = '';
@@ -39,34 +44,15 @@ function addNewPost(title, content) {
     displayBlogPosts();
 }
 
-// Create modal for adding new posts
-const modal = document.createElement('div');
-modal.className = 'modal';
-modal.innerHTML = `
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Añadir Nuevo Artículo</h2>
-        <input type="text" id="post-title" placeholder="Título del artículo" required>
-        <textarea id="post-content" placeholder="Contenido del artículo" required></textarea>
-        <button id="submit-post" class="cta-button">Publicar</button>
-    </div>
-`;
-document.body.appendChild(modal);
-
-const closeBtn = modal.querySelector('.close');
-const submitPostBtn = document.getElementById('submit-post');
-const postTitleInput = document.getElementById('post-title');
-const postContentInput = document.getElementById('post-content');
-
-addPostBtn.onclick = () => modal.style.display = "block";
-closeBtn.onclick = () => modal.style.display = "none";
+addPostBtn.onclick = () => addPostModal.style.display = "block";
+closeBtn.onclick = () => addPostModal.style.display = "none";
 
 submitPostBtn.onclick = () => {
     const title = postTitleInput.value.trim();
     const content = postContentInput.value.trim();
     if (title && content) {
         addNewPost(title, content);
-        modal.style.display = "none";
+        addPostModal.style.display = "none";
         postTitleInput.value = '';
         postContentInput.value = '';
     }
