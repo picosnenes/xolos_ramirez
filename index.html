@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,19 +15,6 @@
             --text-color: #333;
             --transition: all 0.3s ease;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideInFromLeft {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(0); }
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
         body, html {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
@@ -42,57 +30,6 @@
             text-align: center;
             padding: 2rem 1rem;
             position: relative;
-            overflow: hidden;
-        }
-        .hero {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-image: url('/api/placeholder/1920/1080');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-        }
-        .hero-content {
-            z-index: 1;
-            animation: fadeIn 2s ease-out;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background: rgba(0, 0, 0, 0.5);
-        }
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        .logo {
-            width: 180px;
-            height: auto;
-            transition: var(--transition);
-            animation: pulse 2s infinite;
-        }
-        .logo:hover {
-            transform: scale(1.1) rotate(5deg);
-        }
-        .lightning {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            opacity: 0.1;
-            z-index: 0;
         }
         nav {
             background-color: rgba(26, 26, 26, 0.8);
@@ -101,11 +38,6 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            transition: var(--transition);
-        }
-        nav.scrolled {
-            background-color: var(--primary-color);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         nav ul {
             list-style-type: none;
@@ -142,60 +74,33 @@
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: var(--transition);
-            animation: slideInFromLeft 0.5s ease-out;
         }
         .main-content:hover {
             transform: translateY(-5px);
         }
-        h2 {
-            color: var(--secondary-color);
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 10px;
-        }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px 0;
-        }
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
+        .blog-section {
+            background-color: #fff;
+            padding: 30px;
+            margin-top: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        .gallery-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: var(--transition);
+        .blog-section h2 {
+            margin-bottom: 20px;
         }
-        .gallery-item:hover img {
-            transform: scale(1.1);
+        .blog-post {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
         }
-        .gallery-item .overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: rgba(0,0,0,0.7);
-            overflow: hidden;
-            width: 100%;
-            height: 0;
-            transition: var(--transition);
+        .blog-post:last-child {
+            border-bottom: none;
         }
-        .gallery-item:hover .overlay {
-            height: 100%;
+        .blog-post h3 {
+            margin: 0;
         }
-        .gallery-item .text {
-            color: white;
-            font-size: 20px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
+        .blog-post p {
+            margin: 10px 0;
         }
         .cta-button {
             display: inline-block;
@@ -222,71 +127,88 @@
             padding: 2rem 1rem;
             margin-top: 20px;
         }
-        .social-icons {
-            margin-top: 20px;
-        }
-        .social-icons a {
-            color: #fff;
-            font-size: 24px;
-            margin: 0 10px;
-            transition: var(--transition);
-        }
-        .social-icons a:hover {
-            color: var(--accent-color);
-            transform: translateY(-3px);
-        }
-        #lightbox {
-            position: fixed;
-            z-index: 1000;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: none;
-        }
-        #lightbox.active {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        #lightbox img {
-            max-width: 90%;
-            max-height: 80%;
-            padding: 4px;
-            background-color: black;
-            border: 2px solid white;
-        }
-        @media (max-width: 768px) {
-            .container {
-                width: 95%;
-            }
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            nav ul li {
-                margin: 10px 0;
-            }
-            .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            }
-        }
-        .modal {
-            position: fixed;
-            z-index: 1000;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: none;
-            justify-content: center;
-            align-items: center;
-        }
-        .modal.active {
-            display: flex;
-        }
-        .modal-content {
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <ul>
+            <li><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="#sobre-nosotros"><i class="fas fa-users"></i> Sobre Nosotros</a></li>
+            <li><a href="#galeria"><i class="fas fa-images"></i> Galería</a></li>
+            <li><a href="#blog"><i class="fas fa-blog"></i> Blog</a></li>
+            <li><a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Xolos Ramirez - Expertos en Xoloitzcuintle</h1>
+    </header>
+
+    <div id="inicio" class="container main-content">
+        <h2>Bienvenidos a Xolos Ramirez</h2>
+        <p>Expertos en la crianza y cuidado del Xoloitzcuintli. Aquí encontrarás toda la información necesaria para proporcionar el mejor cuidado a tu compañero canino.</p>
+        <a href="#blog" class="cta-button">Leer Blog</a>
+    </div>
+
+    <div id="sobre-nosotros" class="container main-content">
+        <h2>Sobre Nosotros</h2>
+        <p>Somos un equipo dedicado a la crianza y cuidado de los Xoloitzcuintles. Nuestra misión es ofrecerte toda la información y apoyo que necesites.</p>
+    </div>
+
+    <div id="galeria" class="container main-content">
+        <h2>Galería</h2>
+        <!-- Add gallery content here -->
+    </div>
+
+    <div id="blog" class="container blog-section">
+        <h2>Blog</h2>
+        <div id="blog-posts">
+            <!-- Blog posts will be dynamically added here -->
+        </div>
+        <div class="add-post">
+            <h3>Agregar Nuevo Artículo</h3>
+            <form id="add-post-form">
+                <input type="text" id="post-title" placeholder="Título del artículo" required><br><br>
+                <textarea id="post-content" rows="5" placeholder="Contenido del artículo" required></textarea><br><br>
+                <button type="submit" class="cta-button">Agregar Artículo</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Xolos Ramirez. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('add-post-form');
+            const postsContainer = document.getElementById('blog-posts');
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                
+                const title = document.getElementById('post-title').value;
+                const content = document.getElementById('post-content').value;
+
+                if (title && content) {
+                    const postDiv = document.createElement('div');
+                    postDiv.classList.add('blog-post');
+
+                    const postTitle = document.createElement('h3');
+                    postTitle.textContent = title;
+
+                    const postContent = document.createElement('p');
+                    postContent.textContent = content;
+
+                    postDiv.appendChild(postTitle);
+                    postDiv.appendChild(postContent);
+
+                    postsContainer.appendChild(postDiv);
+
+                    form.reset();  // Clear the form fields
+                }
+            });
+        });
+    </script>
+</body>
+</html>
