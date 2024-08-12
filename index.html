@@ -307,7 +307,24 @@
             </ul>
             <a href="#" class="cta-button" id="openVideo">Ver Nuestra Historia</a>
         </section>
+<section id="blog" class="main-content">
+    <h2>Blog de Xolos Ramirez</h2>
+    <div id="blog-posts">
+        <!-- Blog posts will be dynamically added here -->
+    </div>
+    <button id="add-post-btn" class="cta-button">Añadir Nuevo Artículo</button>
+</section>
 
+<!-- Add this modal at the end of the body, before the closing </body> tag -->
+<div id="add-post-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Añadir Nuevo Artículo</h2>
+        <input type="text" id="post-title" placeholder="Título del artículo" required>
+        <textarea id="post-content" placeholder="Contenido del artículo" required></textarea>
+        <button id="submit-post" class="cta-button">Publicar</button>
+    </div>
+</div>
         <section id="galeria" class="main-content">
             <h2>Galería de Nuestros Xolos</h2>
             <div class="gallery" id="galleryContainer">
